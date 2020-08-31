@@ -112,6 +112,17 @@ public class record extends Fragment implements EasyPermissions.PermissionCallba
         act = act2;
         username = str;
         password = str1;
+
+        if (!isDeviceSupportCamera()) {
+            Toast.makeText(this.getActivity(),
+                    "Sorry! Your device doesn't support camera",
+                    Toast.LENGTH_LONG).show();
+            // will close the app if the device does't have camera
+            activity.finish();
+        }
+
+
+
         String[] perms = {Manifest.permission.CAMERA, Manifest.permission.READ_EXTERNAL_STORAGE,Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.RECORD_AUDIO};
         if(EasyPermissions.hasPermissions(this.getActivity(),perms)){
             Toast.makeText(this.getActivity(),"打開攝影機",Toast.LENGTH_SHORT).show();
@@ -242,6 +253,7 @@ public class record extends Fragment implements EasyPermissions.PermissionCallba
         //mShowImage=(ImageView) findViewById(R.id.show_image);
         // btnCapturePicture = (Button) findViewById(R.id.btnCapturePicture);
         btnRecordVideo = (Button)activity.findViewById(R.id.btnRecordVideo);
+        btnChangeCamera = activity.findViewById(R.id.btnChangeCamera);
         simpleChronometer = (Chronometer)activity.findViewById(R.id.simpleChronometer);
         simpleChronometer.setText("按錄影機"+"\n"+"開始錄影");
         simpleChronometer.setFormat("00:%s");
@@ -264,6 +276,16 @@ public class record extends Fragment implements EasyPermissions.PermissionCallba
                 recordVideo();
             }
         });
+        btnChangeCamera.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                // record video
+
+
+                changeCamera();
+            }
+        });
 
 
 
@@ -274,7 +296,7 @@ public class record extends Fragment implements EasyPermissions.PermissionCallba
      * Checking device has camera hardware or not
      * */
     private boolean isDeviceSupportCamera() {
-        if (activity.getApplicationContext().getPackageManager().hasSystemFeature(
+        if (this.getActivity().getPackageManager().hasSystemFeature(
                 PackageManager.FEATURE_CAMERA)) {
             int numbers=Camera.getNumberOfCameras();
             /*Toast.makeText(getApplicationContext(),
@@ -286,6 +308,53 @@ public class record extends Fragment implements EasyPermissions.PermissionCallba
             // no camera on this device
             return false;
         }
+    }
+    private void changeCamera(){
+
+        mCamera.stopPreview();
+        mCamera.release();
+        if (whichCamera==0) //如果是後鏡頭的話
+        {
+            whichCamera=1;
+            btnChangeCamera.setBackgroundResource(R.drawable.flip_front);
+
+
+        }
+        else{
+            whichCamera=0;
+            btnChangeCamera.setBackgroundResource(R.drawable.flip_back);
+        }
+        mCamera = getCameraInstance(whichCamera);
+        List<Camera.Size> sizeList = mCamera.getParameters().getSupportedVideoSizes();
+
+        for (int i = 0; i < sizeList.size(); i++) {
+
+            if (tempSize<sizeList.get(i).height)
+                tempSize=sizeList.get(i).height;
+            Log.d("Camera", String.valueOf(sizeList.get(i).width) + ", " + sizeList.get(i).height);
+        }
+
+
+        if (tempSize>=1080)
+        {
+            Log.d("Camera","Set record quality to 1080");
+            maxSize=1080;
+        }
+        else if(tempSize<1080&&tempSize>=720){
+            Log.d("Camera","Set record quality to 720");
+            maxSize=720;
+        }
+        else{
+            Log.d("Camera","Set record quality to 480");
+            maxSize=480;
+        }
+
+        //Log.d("Camera", String.valueOf(sizeList.get(0).height));
+
+        mPreview = new CameraPreview(this.getActivity(), mCamera);
+
+        FrameLayout preview = (FrameLayout)activity.findViewById(R.id.camera_preview);
+        preview.addView(mPreview);
     }
 
 

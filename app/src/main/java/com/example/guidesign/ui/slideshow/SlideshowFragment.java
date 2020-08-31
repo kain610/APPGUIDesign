@@ -1,6 +1,7 @@
 package com.example.guidesign.ui.slideshow;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +16,11 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.example.guidesign.Handler;
 import com.example.guidesign.R;
 import com.example.guidesign.hidire;
 import com.example.guidesign.history;
@@ -22,7 +28,13 @@ import com.example.guidesign.ui.gallery.CustomAdapter;
 import com.example.guidesign.ui.gallery.DataModel;
 import com.example.guidesign.ui.gallery.showaction;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
+
+import static android.content.Context.MODE_PRIVATE;
 
 public class SlideshowFragment extends Fragment {
 
@@ -31,6 +43,8 @@ public class SlideshowFragment extends Fragment {
     ArrayList<datamodel> datamodels;
 
     ListView lv;
+    String act1,act2,act3,act4,act5,act6,act7,act8;
+    String username;
     private static customadapter adapter;
     private SlideshowViewModel slideshowViewModel;
 
@@ -40,18 +54,11 @@ public class SlideshowFragment extends Fragment {
                 ViewModelProviders.of(this).get(SlideshowViewModel.class);
         View root = inflater.inflate(R.layout.fragment_slideshow, container, false);
         lv = (ListView)root.findViewById(R.id.listView2);
-        datamodels= new ArrayList<>();
-        datamodels.add(new datamodel("動作一","1","2020-01-01"));
-        datamodels.add(new datamodel("動作二","2", "2020-01-01"));
-        datamodels.add(new datamodel("動作三","3", "2020-01-01"));
-        datamodels.add(new datamodel("動作四","4","2020-01-01"));
-        datamodels.add(new datamodel("動作五","5","2020-01-01"));
-        datamodels.add(new datamodel("動作六","6", "2020-01-01"));
-        datamodels.add(new datamodel("動作七","7", "2020-01-01"));
-        datamodels.add(new datamodel("動作八","8", "2020-01-01"));
-        adapter= new customadapter(datamodels,getContext());
+        username = this.getActivity().getSharedPreferences("data", MODE_PRIVATE).getString("username1", "");
 
-        lv.setAdapter(adapter);
+        initView(root);
+
+
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -70,5 +77,91 @@ public class SlideshowFragment extends Fragment {
         });
 
         return root;
+    }
+    private void initView(View v){
+
+        showList();
+
+    }
+    private void showList(){
+        Log.d("SQL server","start show list");
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://140.116.70.173/AndroidFileUpload/act.php",
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+
+                        try{
+                            JSONObject obj = new JSONObject(response);
+                            JSONArray array = obj.getJSONArray("patient");
+                            Log.d("SQL server",String.valueOf(array.length()));
+                            for ( int i = 0; i<array.length();i++){
+                                JSONObject patientObj = array.getJSONObject(i);
+                                if(patientObj.getString("Name").equals(username) &&  patientObj.getInt("Action")==1)
+                                {
+                                    act1 = patientObj.getString("Time");
+                                }
+                                if(patientObj.getString("Name").equals(username) &&  patientObj.getInt("Action")==2)
+                                {
+                                    act2 = patientObj.getString("Time");
+                                }
+                                if(patientObj.getString("Name").equals(username) &&  patientObj.getInt("Action")==3)
+                                {
+                                    act3 = patientObj.getString("Time");
+                                }
+                                if(patientObj.getString("Name").equals(username) &&  patientObj.getInt("Action")==4)
+                                {
+                                    act4 = patientObj.getString("Time");
+                                }
+                                if(patientObj.getString("Name").equals(username) &&  patientObj.getInt("Action")==5)
+                                {
+                                    act5 = patientObj.getString("Time");
+                                }
+                                if(patientObj.getString("Name").equals(username) &&  patientObj.getInt("Action")==6)
+                                {
+                                    act6 = patientObj.getString("Time");
+                                }
+                                if(patientObj.getString("Name").equals(username) &&  patientObj.getInt("Action")==7)
+                                {
+                                    act7 = patientObj.getString("Time");
+                                }
+                                if(patientObj.getString("Name").equals(username) &&  patientObj.getInt("Action")==8)
+                                {
+                                    act8 = patientObj.getString("Time");
+                                }
+                                datamodels= new ArrayList<>();
+                                datamodels.add(new datamodel("動作一","1",act1));
+                                datamodels.add(new datamodel("動作二","2", act2));
+                                datamodels.add(new datamodel("動作三","3", act3));
+                                datamodels.add(new datamodel("動作四","4",act4));
+                                datamodels.add(new datamodel("動作五","5",act5));
+                                datamodels.add(new datamodel("動作六","6", act6));
+                                datamodels.add(new datamodel("動作七","7", act7));
+                                datamodels.add(new datamodel("動作八","8", act8));
+                                adapter= new customadapter(datamodels,getContext());
+
+                                lv.setAdapter(adapter);
+
+
+                            }
+
+
+
+                        } catch (JSONException e){
+                            e.printStackTrace();
+                        }
+
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+                Log.d("SQL server", "Failed with error msg:\t" + error.getMessage());
+                Log.d("SQL server", "Error StackTrace: \t" + error.getStackTrace());
+            }
+        }){
+
+        };
+        Handler.getInstance(getContext()).addToRequestQue(stringRequest);
+
     }
 }

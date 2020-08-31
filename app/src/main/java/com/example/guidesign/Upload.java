@@ -82,6 +82,7 @@ public class Upload extends Fragment {
         act = (int)getArguments().get("act");
         direction = (String)getArguments().get("direction");
         time=(String)getArguments().get("time");
+
         // boolean flag to identify the media type, image or video
         boolean isImage = getArguments().getBoolean("isImage");
 
@@ -108,7 +109,9 @@ public class Upload extends Fragment {
 
                 //txtPercentage.setText("50" + "%");
                 progressBar.setVisibility(View.VISIBLE);
+
                 new UploadFileToServer().execute();
+
 
 
             }
@@ -151,12 +154,15 @@ public class Upload extends Fragment {
     @SuppressLint("StaticFieldLeak")
     public class UploadFileToServer extends AsyncTask<Void, Integer, String> {
 
+        AlertDialog any;
         @Override
         protected void onPreExecute() {
 
             // setting progress bar to zero
             progressBar.setProgress(0);
+
             super.onPreExecute();
+
 
         }
 
@@ -172,11 +178,26 @@ public class Upload extends Fragment {
 
             // updating percentage value
             txtPercentage.setText(String.valueOf(progress[0]) + "%");
+            if (progress[0] == 100){
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                builder.setMessage("分析中....")
+                        .setCancelable(false);
+
+                 any = builder.create();
+               any.show();
+
+
+
+            }
+
+
+
 
         }
 
         @Override
         protected String doInBackground(Void... params) {
+
             return uploadFile();
 
         }
@@ -189,6 +210,7 @@ public class Upload extends Fragment {
 
             HttpClient httpclient = new DefaultHttpClient();
             HttpPost httppost = new HttpPost(Config.FILE_UPLOAD_URL);
+
 
 
             try {
@@ -237,13 +259,19 @@ public class Upload extends Fragment {
             }
 
             httpclient.getConnectionManager().shutdown();
+
             return responseString;
+
 
         }
 
+
         @Override
         protected void onPostExecute(String result) {
+
             Log.e(TAG, "Response from server: " + result);
+            any.dismiss();
+
 
             // showing the server response in an alert dialog
             showAlert(result);
@@ -259,6 +287,8 @@ public class Upload extends Fragment {
      * Method to show alert dialog
      * */
     private void showAlert(String message) {
+
+
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setMessage(message).setTitle("提醒")
                 .setCancelable(false)
@@ -279,8 +309,18 @@ public class Upload extends Fragment {
                 startActivity(is);
             }
         });*/
+
         AlertDialog alert = builder.create();
         alert.show();
+    }
+    private void closeDialog(AlertDialog dialog) {
+        try {
+            java.lang.reflect.Field field = dialog.getClass().getSuperclass().getDeclaredField("mShowing");
+            field.setAccessible(true);
+            field.set(dialog, true);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 

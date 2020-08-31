@@ -30,15 +30,14 @@
                 android:layout_weight=".25">
 
                 <Button
-                    android:id="@+id/btnRecordVideo"
-                    android:layout_width="101dp"
-                    android:layout_height="195dp"
+                    android:id="@+id/btnChangeCamera"
+                    android:layout_width="138dp"
+                    android:layout_height="119dp"
                     android:layout_gravity="center_horizontal"
                     android:layout_weight=".05"
-
-
-                    android:background="@drawable/video_camera"
+                    android:background="@drawable/flip_front"
                     android:gravity="center" />
+
             </FrameLayout>
 
             <FrameLayout
@@ -52,6 +51,23 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:textSize="30sp" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight=".25">
+
+                <Button
+                    android:id="@+id/btnRecordVideo"
+                    android:layout_width="114dp"
+                    android:layout_height="133dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_weight=".05"
+
+
+                    android:background="@drawable/video_camera"
+                    android:gravity="center" />
 
             </FrameLayout>
 
