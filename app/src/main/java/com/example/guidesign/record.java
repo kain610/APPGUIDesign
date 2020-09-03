@@ -22,7 +22,7 @@ import androidx.core.content.FileProvider;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
-import android.hardware.Camera;
+
 import android.os.CountDownTimer;
 import android.os.Environment;
 import android.os.Handler;
@@ -417,6 +417,7 @@ public class record extends Fragment implements EasyPermissions.PermissionCallba
                     if (prepareVideoRecorder()) {
                         // Camera is available and unlocked, MediaRecorder is prepared,
                         // now you can start recording
+
                         mediaRecorder.start();
                         new CountDownTimer(7500, 1000) {
                             public void onTick(long millisUntilFinished) {
@@ -504,7 +505,7 @@ public class record extends Fragment implements EasyPermissions.PermissionCallba
 
 
 
-    /*    if(maxSize==1080)
+       /* if(maxSize==1080)
             mediaRecorder.setProfile(CamcorderProfile.get(whichCamera,CamcorderProfile.QUALITY_1080P));
         else if(maxSize==720)
             mediaRecorder.setProfile(CamcorderProfile.get(whichCamera,CamcorderProfile.QUALITY_720P));
@@ -516,8 +517,9 @@ public class record extends Fragment implements EasyPermissions.PermissionCallba
 
         // Step 4: Set output file
         File temp=getOutputMediaFile(MEDIA_TYPE_VIDEO);
-        fileUri= Uri.fromFile(temp);
+        fileUri= getOutputMediaFileUri(MEDIA_TYPE_VIDEO);
         mediaRecorder.setOutputFile(temp.toString());
+
 
         // Step 5: Set the preview output
         mediaRecorder.setPreviewDisplay(mPreview.getHolder().getSurface());
@@ -678,8 +680,8 @@ public class record extends Fragment implements EasyPermissions.PermissionCallba
      * Creating file uri to store image/video
      */
     public Uri getOutputMediaFileUri(int type) {
-        //return Uri.fromFile(getOutputMediaFile(type));
-        return FileProvider.getUriForFile(this.getActivity(), BuildConfig.APPLICATION_ID + ".provider",getOutputMediaFile(type));
+        return Uri.fromFile(getOutputMediaFile(type));
+        //return FileProvider.getUriForFile(this.getActivity(), BuildConfig.APPLICATION_ID + ".provider",getOutputMediaFile(type));
     }
 
     /**
@@ -695,11 +697,13 @@ public class record extends Fragment implements EasyPermissions.PermissionCallba
 
         // Create the storage directory if it does not exist
         if (!mediaStorageDir.exists()) {
+
             if (!mediaStorageDir.mkdirs()) {
                 Log.d(TAG, "Oops! Failed create "
                         + Config.IMAGE_DIRECTORY_NAME + " directory");
                 return null;
             }
+
         }
 
         // Create a media file name

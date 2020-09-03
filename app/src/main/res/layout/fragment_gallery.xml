@@ -22,7 +22,7 @@
 
             <TextView
                 android:id="@+id/action"
-                android:layout_width="735dp"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center"
@@ -31,7 +31,7 @@
 
             <TextView
                 android:id="@+id/range"
-                android:layout_width="603dp"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center"
@@ -40,7 +40,7 @@
 
             <TextView
                 android:id="@+id/lasttime"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center"

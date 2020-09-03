@@ -1,21 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:background="@color/view_background"
-    android:orientation="horizontal"
-    android:padding="10dp" >
-
+    android:orientation="horizontal">
 
 
     <!-- To display picture taken -->
     <LinearLayout
         android:layout_width="0dp"
-        android:layout_weight=".9"
         android:layout_height="fill_parent"
+        android:layout_weight=".9"
         android:background="@color/view_background"
         android:orientation="vertical"
-        android:padding="10dp" >
+        android:padding="10dp">
 
 
         <!-- Videoview to preview recorded video -->
@@ -24,9 +22,9 @@
             android:id="@+id/videoPreview"
             android:layout_width="fill_parent"
             android:layout_height="0dp"
+            android:layout_marginTop="15dp"
             android:layout_weight=".7"
-            android:visibility="gone"
-            android:layout_marginTop="15dp"/>
+            android:visibility="gone" />
 
         <TextView
             android:id="@+id/txtPercentage"
@@ -49,11 +47,10 @@
 
     <Button
         android:id="@+id/btnUpload"
-        android:layout_width="0dp"
-        android:layout_weight=".1"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center|right"
-        android:layout_marginBottom="20dp"
+        android:layout_weight=".1"
         android:background="@color/btn_bg"
         android:paddingLeft="20dp"
         android:paddingRight="20dp"

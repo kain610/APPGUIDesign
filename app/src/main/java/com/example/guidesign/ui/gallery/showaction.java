@@ -30,44 +30,45 @@ public class showaction extends Fragment {
         View root = inflater.inflate(R.layout.fragment_showaction, container, false);
       ImageView imageView = root.findViewById(R.id.imageView2);
       TextView textView = root.findViewById(R.id.action_name);
+      Bundle bundle = getArguments();
 
-       String str = (String)getArguments().get("position");
-        if (str == "0"){
+       int str =bundle.getInt("position") ;
+       if (str == 0){
           act = 1;
           textView.setText("動作一");
           Glide.with(this).load(R.drawable.action1).into(imageView);
         }
-      if (str == "1"){
+      if (str == 1){
         act = 2;
         textView.setText("動作二");
         Glide.with(this).load(R.drawable.action2).into(imageView);
       }
-      if (str == "2"){
+      if (str == 2){
         act = 3;
         textView.setText("動作三");
         Glide.with(this).load(R.drawable.action3).into(imageView);
       }
-      if (str == "3"){
+      if (str == 3){
         act = 4;
         textView.setText("動作四");
         Glide.with(this).load(R.drawable.action4).into(imageView);
       }
-      if (str == "4"){
+      if (str == 4){
         act = 5;
         textView.setText("動作五");
         Glide.with(this).load(R.drawable.action5).into(imageView);
       }
-      if (str == "5"){
+      if (str == 5){
         act = 6;
         textView.setText("動作六");
         Glide.with(this).load(R.drawable.action6).into(imageView);
       }
-      if (str == "6"){
+      if (str == 6){
         act = 7;
         textView.setText("動作七");
         Glide.with(this).load(R.drawable.action7).into(imageView);
       }
-      if (str == "7"){
+      if (str == 7){
         act = 8;
         textView.setText("動作八");
         Glide.with(this).load(R.drawable.action8).into(imageView);

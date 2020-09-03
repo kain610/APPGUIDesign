@@ -41,28 +41,30 @@ public class hidire extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View root = inflater.inflate(R.layout.fragment_hidire, container, false);
-        String str = (String)getArguments().get("position");
-        if (str == "0"){
+        Bundle bundle = getArguments();
+
+        int str =bundle.getInt("position") ;
+        if (str == 0){
             act = 1;                    }
-        if (str == "1"){
+        if (str == 1){
             act = 2;
                     }
-        if (str == "2"){
+        if (str == 2){
             act = 3;
         }
-        if (str == "3"){
+        if (str == 3){
             act = 4;
         }
-        if (str == "4"){
+        if (str == 4){
             act = 5;
         }
-        if (str == "5"){
+        if (str == 5){
             act = 6;
         }
-        if (str == "6"){
+        if (str == 6){
             act = 7;
         }
-        if (str == "7"){
+        if (str == 7){
             act = 8;
         }
         lefthand = root.findViewById(R.id.lefthand);

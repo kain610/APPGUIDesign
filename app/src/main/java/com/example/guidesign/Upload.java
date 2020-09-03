@@ -313,15 +313,7 @@ public class Upload extends Fragment {
         AlertDialog alert = builder.create();
         alert.show();
     }
-    private void closeDialog(AlertDialog dialog) {
-        try {
-            java.lang.reflect.Field field = dialog.getClass().getSuperclass().getDeclaredField("mShowing");
-            field.setAccessible(true);
-            field.set(dialog, true);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+
 
 
 

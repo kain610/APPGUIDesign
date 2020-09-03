@@ -63,7 +63,7 @@ public class SlideshowFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Bundle bundle = new Bundle();
-                bundle.putString("position", String.valueOf(position));
+                bundle.putInt("position", position);
                 hidire fragment = new hidire();
                 fragment.setArguments(bundle);
                 FragmentTransaction transaction = getFragmentManager().beginTransaction();

@@ -19,22 +19,22 @@
 
         <TextView
             android:id="@+id/action_name"
-            android:layout_width="214dp"
-            android:layout_height="55dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
 
             android:text="TextView"
             android:textSize="30sp" />
 
         <ImageView
             android:id="@+id/imageView2"
-            android:layout_width="275dp"
-            android:layout_height="485dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             app:srcCompat="@android:drawable/star_on" />
 
         <ImageButton
             android:id="@+id/imageButton"
-            android:layout_width="204dp"
-            android:layout_height="106dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:backgroundTint="@color/white"
             android:maxWidth="100dp"
             android:maxHeight="100dp"
