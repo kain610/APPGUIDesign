@@ -13,7 +13,7 @@
         android:layout_marginLeft="25dp"
         android:layout_marginBottom="10dp"
         android:gravity="center"
-        android:text="新帳號註冊"
+        android:text="密碼查詢"
         android:textSize="50sp" />
 
     <LinearLayout
@@ -23,7 +23,7 @@
         android:orientation="vertical">
 
         <EditText
-            android:id="@+id/user"
+            android:id="@+id/f_user"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -31,40 +31,23 @@
             android:inputType="textPersonName" />
 
         <EditText
-            android:id="@+id/phone"
+            android:id="@+id/f_phone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="電話"
             android:inputType="phone" />
 
-        <EditText
-            android:id="@+id/pwd"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="密碼"
-            android:inputType="textPassword" />
 
-        <EditText
-            android:id="@+id/checkpwd"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="確認密碼"
-            android:inputType="textPassword" />
 
-        <Spinner
-            android:id="@+id/spinner"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+
 
         <Button
-            android:id="@+id/regist"
+            android:id="@+id/found"
             android:layout_width="270dp"
             android:layout_height="wrap_content"
             android:background="@color/colorPrimary"
-            android:text="註冊"
+            android:text="查詢"
             android:textColor="@android:color/white" />
 
 

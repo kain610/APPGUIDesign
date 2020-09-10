@@ -78,6 +78,18 @@
             android:text="註冊"
             android:textColor="@android:color/white" />
 
+        <Button
+            android:id="@+id/btn_forget"
+            android:layout_width="111dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/btn_certify"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="28dp"
+            android:layout_marginRight="28dp"
+            android:background="#FFFFFF"
+            android:text="忘記密碼"
+            android:textColor="@color/action_bar" />
+
         <CheckBox
             android:id="@+id/remember"
             android:layout_width="153dp"

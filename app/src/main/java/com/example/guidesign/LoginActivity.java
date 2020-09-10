@@ -44,6 +44,7 @@ public class LoginActivity extends AppCompatActivity implements EasyPermissions.
 
     private Button btnCertify;
     private Button btnReg;
+    private Button btnFor;
     private EditText username;
     private EditText password;
     private CheckBox remember;
@@ -80,6 +81,7 @@ public class LoginActivity extends AppCompatActivity implements EasyPermissions.
     private void initView(){
         btnCertify = (Button) findViewById(R.id.btn_certify);
         btnReg = (Button) findViewById(R.id.btn_reg);
+        btnFor = (Button) findViewById(R.id.btn_forget);
         username = (EditText)findViewById(R.id.username);
         password = (EditText)findViewById(R.id.password);
         remember = (CheckBox)findViewById(R.id.remember);
@@ -115,6 +117,21 @@ public class LoginActivity extends AppCompatActivity implements EasyPermissions.
 
                     btnReg.setBackgroundResource(R.color.colorPrimary);
                     Intent intent = new Intent(LoginActivity.this, register.class);
+                    startActivity(intent);
+                }
+                return false;
+            }
+        });
+        btnFor.setOnTouchListener(new Button.OnTouchListener(){
+            @Override
+            public boolean onTouch(View arg0, MotionEvent motionEvent) {
+                if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {  //按下的時候改變背景及顏色
+                    btnFor.setBackgroundResource(R.color.colorPrimaryDark);
+                }
+                if (motionEvent.getAction() == MotionEvent.ACTION_UP) {  //起來的時候恢復背景與顏色
+
+                    btnFor.setBackgroundResource(R.color.colorPrimary);
+                    Intent intent = new Intent(LoginActivity.this, froget.class);
                     startActivity(intent);
                 }
                 return false;

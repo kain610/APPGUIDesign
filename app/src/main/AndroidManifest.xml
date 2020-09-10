@@ -20,7 +20,8 @@
         android:requestLegacyExternalStorage="true"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".register"></activity>
+        <activity android:name=".froget"></activity>
+        <activity android:name=".register" />
         <activity
             android:name=".remember"
             android:screenOrientation="landscape" />
