@@ -23,6 +23,7 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -39,6 +40,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import static android.content.Context.MODE_PRIVATE;
 
@@ -69,7 +72,7 @@ public class GalleryFragment extends Fragment {
         v = inflater.inflate(R.layout.fragment_gallery, container,false);
 
         lv = (ListView)v.findViewById(R.id.listView1);
-        username = this.getActivity().getSharedPreferences("data", MODE_PRIVATE).getString("username1", "");
+        username = this.getActivity().getSharedPreferences("data", MODE_PRIVATE).getString("Name", "");
 
 
         initView(v);
@@ -107,10 +110,18 @@ public class GalleryFragment extends Fragment {
     }
     private void showList(){
         Log.d("SQL server","start show list");
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://140.116.70.173/AndroidFileUpload/act.php",
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, "http://140.116.70.173/AndroidFileUpload/act.php",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
+                        act1 = "尚未錄製";
+                        act2 = "尚未錄製";
+                        act3 = "尚未錄製";
+                        act4 = "尚未錄製";
+                        act5 = "尚未錄製";
+                        act6 = "尚未錄製";
+                        act7 = "尚未錄製";
+                        act8 = "尚未錄製";
 
                         try{
                             JSONObject obj = new JSONObject(response);
@@ -121,34 +132,45 @@ public class GalleryFragment extends Fragment {
                                 if(patientObj.getString("Name").equals(username) &&  patientObj.getInt("Action")==1)
                                 {
                                     act1 = patientObj.getString("Time");
+
+
+
                                 }
+
                                 if(patientObj.getString("Name").equals(username) &&  patientObj.getInt("Action")==2)
                                 {
                                     act2 = patientObj.getString("Time");
+
                                 }
                                 if(patientObj.getString("Name").equals(username) &&  patientObj.getInt("Action")==3)
                                 {
                                     act3 = patientObj.getString("Time");
+
                                 }
                                 if(patientObj.getString("Name").equals(username) &&  patientObj.getInt("Action")==4)
                                 {
                                     act4 = patientObj.getString("Time");
+
                                 }
                                 if(patientObj.getString("Name").equals(username) &&  patientObj.getInt("Action")==5)
                                 {
                                     act5 = patientObj.getString("Time");
+
                                 }
                                 if(patientObj.getString("Name").equals(username) &&  patientObj.getInt("Action")==6)
                                 {
                                     act6 = patientObj.getString("Time");
+
                                 }
                                 if(patientObj.getString("Name").equals(username) &&  patientObj.getInt("Action")==7)
                                 {
                                     act7 = patientObj.getString("Time");
+
                                 }
                                 if(patientObj.getString("Name").equals(username) &&  patientObj.getInt("Action")==8)
                                 {
                                     act8 = patientObj.getString("Time");
+
                                 }
                                 dataModels= new ArrayList<>();
 
@@ -170,7 +192,28 @@ public class GalleryFragment extends Fragment {
 
 
                         } catch (JSONException e){
-                            e.printStackTrace();
+                           /* act1 = "尚未錄製";
+                            act2 = "尚未錄製";
+                            act3 = "尚未錄製";
+                            act4 = "尚未錄製";
+                            act5 = "尚未錄製";
+                            act6 = "尚未錄製";
+                            act7 = "尚未錄製";
+                            act8 = "尚未錄製";
+                            dataModels= new ArrayList<>();
+
+                            dataModels.add(new DataModel("動作一","1",act1));
+                            dataModels.add(new DataModel("動作二","2", act2));
+                            dataModels.add(new DataModel("動作三","3", act3));
+                            dataModels.add(new DataModel("動作四","4",act4));
+                            dataModels.add(new DataModel("動作五","5",act5));
+                            dataModels.add(new DataModel("動作六","6", act6));
+                            dataModels.add(new DataModel("動作七","7", act7));
+                            dataModels.add(new DataModel("動作八","8", act8));
+                            adapter= new CustomAdapter(dataModels,getContext());
+
+                            lv.setAdapter(adapter);*/
+
                         }
 
                     }
@@ -182,6 +225,11 @@ public class GalleryFragment extends Fragment {
                 Log.d("SQL server", "Error StackTrace: \t" + error.getStackTrace());
             }
         }){
+            protected Map<String, String> getParams()  {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("username", username);
+                return params;
+            }
 
         };
         Handler.getInstance(getContext()).addToRequestQue(stringRequest);

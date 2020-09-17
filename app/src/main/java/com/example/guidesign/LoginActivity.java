@@ -20,6 +20,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -33,7 +34,9 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.example.guidesign.PatientAdapter;
 import com.example.guidesign.Patient;
@@ -46,6 +49,7 @@ public class LoginActivity extends AppCompatActivity implements EasyPermissions.
     private Button btnReg;
     private Button btnFor;
     private EditText username;
+    String name;
     private EditText password;
     private CheckBox remember;
     private String getuser,getpass;
@@ -160,7 +164,7 @@ public class LoginActivity extends AppCompatActivity implements EasyPermissions.
 
     private boolean checkName(){
         Log.d("SQL server","start checking name");
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://140.116.70.173/AndroidFileUpload/login.php",
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, "http://140.116.70.173/AndroidFileUpload/login.php",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -172,10 +176,11 @@ public class LoginActivity extends AppCompatActivity implements EasyPermissions.
 
                             for ( int i = 0; i<array.length();i++){
                                 JSONObject patientObj = array.getJSONObject(i);
-                                Log.d("SQL server",patientObj.getString("Name")+" "+patientObj.getString("Gender")+" "+patientObj.getString("Age"));
-                                if(patientObj.getString("Name").equals(getuser)&&patientObj.getString("Password").equals(getpass))
+                                Log.d("SQL server",patientObj.getString("Account"));
+                                if(patientObj.getString("Account").equals(getuser) && patientObj.getString("Password").equals(getpass))
                                 {
                                     Log.d("SQL server","Do have "+getuser);
+                                    name = patientObj.getString("Name");
 
                                     haveName=1;
                                 }
@@ -188,7 +193,7 @@ public class LoginActivity extends AppCompatActivity implements EasyPermissions.
                                         .show();
                             else
                             {
-                                Intent a = new Intent(LoginActivity.this, MainActivity.class);
+                                Intent a = new Intent(LoginActivity.this, MainActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                                 a.putExtra("username", getuser);
                                 a.putExtra("password", getpass);
                                 a.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
@@ -213,6 +218,10 @@ public class LoginActivity extends AppCompatActivity implements EasyPermissions.
 
                         } catch (JSONException e){
                             e.printStackTrace();
+                            haveName=0;
+                            Toast.makeText(getApplicationContext(),
+                                    "無此使用者或密碼錯誤", Toast.LENGTH_LONG)
+                                    .show();
                         }
 
                     }
@@ -224,6 +233,15 @@ public class LoginActivity extends AppCompatActivity implements EasyPermissions.
                 Log.d("SQL server", "Error StackTrace: \t" + error.getStackTrace());
             }
         }){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                getuser=username.getText().toString();
+                getpass=password.getText().toString();
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("username", getuser);
+                params.put("password", getpass);
+                return params;
+            }
 
         };
         Handler.getInstance(getApplicationContext()).addToRequestQue(stringRequest);
@@ -240,6 +258,7 @@ public class LoginActivity extends AppCompatActivity implements EasyPermissions.
         editor.putString("password",pwd);
         editor.putString("username1",usr);
         editor.putString("password1",pwd);
+        editor.putString("Name",name);
         editor.commit();
     }
 

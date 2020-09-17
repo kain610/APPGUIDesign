@@ -2,6 +2,9 @@ package com.example.guidesign;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -31,7 +34,7 @@ public class froget extends AppCompatActivity {
     private static final String TAG = MainActivity.class.getSimpleName();
     private String f_user , f_phone;
     private Button sumbit;
-    public static final String found_URL = "http://140.116.70.173/AndroidFileUpload/register.php";
+    public static final String found_URL = "http://140.116.70.173/AndroidFileUpload/forget.php";
 
 
 
@@ -54,7 +57,7 @@ public class froget extends AppCompatActivity {
         sumbit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new FoundToServer();
+                new FoundToServer().execute();
             }
 
         });
@@ -137,12 +140,40 @@ public class froget extends AppCompatActivity {
             Log.e(TAG, "Response from server: " + result);
 
 
-
+            showAlert(result);
             // showing the server response in an alert dialog
 
 
             super.onPostExecute(result);
         }
 
+    }
+
+    private void showAlert(String message) {
+
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(froget.this);
+        builder.setMessage(message).setTitle("提醒")
+                .setCancelable(false)
+                .setPositiveButton("登入", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        Intent intent = new Intent(froget.this, LoginActivity.class);
+
+                        startActivity(intent);
+
+                    }
+                }).setNegativeButton("重新查詢",null)
+
+
+        ;
+       /* builder.setNegativeButton("重新錄製", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialogInterface, int i) {
+                Intent is = new Intent(UploadActivity.this, ActionActivity.class);
+                startActivity(is);
+            }
+        });*/
+
+        AlertDialog alert = builder.create();
+        alert.show();
     }
 }

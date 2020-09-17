@@ -33,6 +33,11 @@
         android:name="com.example.guidesign."
         android:label="@string/menu_slideshow"
         tools:layout="@layout/fragment_slideshow" />
+    <fragment
+        android:id="@+id/nav_tools"
+        android:name="com.example.guidesign.ui.tools.ToolsFragment"
+        android:label="@string/menu_tools"
+        tools:layout="@layout/fragment_tools" />
 
 
 

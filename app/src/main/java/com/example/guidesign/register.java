@@ -218,47 +218,7 @@ public class register extends AppCompatActivity {
         alert.show();
     }
 
-  /*  private Runnable mutiThread = new Runnable(){
-        public void run()
-        {
-            // 當這個執行緒完全跑完後執行
-            userName = String.valueOf(eduser);
-            pwd = String.valueOf(edpwd);
-            checkpwd = String.valueOf(edcheckpwd);
-            phone = String.valueOf(edphone);
-            status = String.valueOf(local);
-            HttpClient httpclient = new DefaultHttpClient();
-            HttpPost method = new HttpPost(register_URL);
 
-            try {
-
-
-                List<NameValuePair> vars = new ArrayList<NameValuePair>();
-                vars.add(new BasicNameValuePair("username", userName));
-                vars.add(new BasicNameValuePair("pwd", pwd));
-                vars.add(new BasicNameValuePair("checkpwd", checkpwd));
-                vars.add(new BasicNameValuePair("phone", phone));
-                vars.add(new BasicNameValuePair("status", status));
-                method.setEntity(new UrlEncodedFormEntity(vars,HTTP.UTF_8));
-                HttpResponse httpResponse = httpclient.execute(method);
-                HttpEntity resEntity = httpResponse.getEntity();
-                if(resEntity != null){
-                    result = EntityUtils.toString(resEntity);
-                }
-
-
-
-
-            }  catch (Exception e) {
-                e.printStackTrace();
-                    } finally {
-                httpclient.getConnectionManager().shutdown();
-            }
-
-
-
-        }
-    };*/
 
 
 

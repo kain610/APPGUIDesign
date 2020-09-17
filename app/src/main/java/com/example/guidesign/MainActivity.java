@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
     private String username, password;
-    private String usr1, pwd1;
+    private String usr1, pwd1,usr2;
     private TextView title;
 
     @Override
@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow)
+                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow,R.id.nav_tools)
                 .setDrawerLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
@@ -91,10 +91,11 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
+         usr2 = getSharedPreferences("data", MODE_PRIVATE).getString("Name", "");
         getMenuInflater().inflate(R.menu.main, menu);
 
         title = (TextView)findViewById(R.id.username);
-        title.setText( "歡迎!"+username);
+        title.setText( "歡迎!"+usr2);
 
         return true;
     }

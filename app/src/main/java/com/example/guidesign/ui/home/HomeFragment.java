@@ -37,13 +37,16 @@ public class HomeFragment extends Fragment {
                 ViewModelProviders.of(this).get(HomeViewModel.class);
         View root = inflater.inflate(R.layout.fragment_home, container, false);
         final TextView textView = root.findViewById(R.id.text_home);
-        username = this.getActivity().getSharedPreferences("data", MODE_PRIVATE).getString("username1", "");
+        username = this.getActivity().getSharedPreferences("data", MODE_PRIVATE).getString("Name", "");
         textView.setText("歡迎回來~~"+username);
 
 
 
         return root;
     }
+
+
+
 
 
 

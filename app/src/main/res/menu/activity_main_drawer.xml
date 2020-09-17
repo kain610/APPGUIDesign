@@ -16,6 +16,10 @@
             android:id="@+id/nav_slideshow"
             android:icon="@drawable/baseline_insert_chart_24"
             android:title="@string/menu_slideshow" />
+        <item
+            android:id="@+id/nav_tools"
+            android:icon="@drawable/ic_person_black_18dp"
+            android:title="使用者資料" />
 
     </group>
 
