@@ -35,42 +35,42 @@ public class showaction extends Fragment {
        int str =bundle.getInt("position") ;
        if (str == 0){
           act = 1;
-          textView.setText("動作一");
+          textView.setText("摸同側耳朵");
           Glide.with(this).load(R.drawable.action1).into(imageView);
         }
       if (str == 1){
         act = 2;
-        textView.setText("動作二");
+        textView.setText("摸對側膝蓋");
         Glide.with(this).load(R.drawable.action2).into(imageView);
       }
       if (str == 2){
         act = 3;
-        textView.setText("動作三");
+        textView.setText("摸屁股");
         Glide.with(this).load(R.drawable.action3).into(imageView);
       }
       if (str == 3){
         act = 4;
-        textView.setText("動作四");
+        textView.setText("手向前抬-手肘伸直");
         Glide.with(this).load(R.drawable.action4).into(imageView);
       }
       if (str == 4){
         act = 5;
-        textView.setText("動作五");
+        textView.setText("翻掌-手肘彎曲");
         Glide.with(this).load(R.drawable.action5).into(imageView);
       }
       if (str == 5){
         act = 6;
-        textView.setText("動作六");
+        textView.setText("手向側邊平舉-手肘伸直");
         Glide.with(this).load(R.drawable.action6).into(imageView);
       }
       if (str == 6){
         act = 7;
-        textView.setText("動作七");
+        textView.setText("手向上抬-手肘伸直");
         Glide.with(this).load(R.drawable.action7).into(imageView);
       }
       if (str == 7){
         act = 8;
-        textView.setText("動作八");
+        textView.setText("翻掌-手肘伸直");
         Glide.with(this).load(R.drawable.action8).into(imageView);
       }
       configureImageButton(root);

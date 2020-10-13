@@ -524,7 +524,7 @@ public class record extends Fragment implements EasyPermissions.PermissionCallba
         // Step 5: Set the preview output
         mediaRecorder.setPreviewDisplay(mPreview.getHolder().getSurface());
         //FPS
-        mediaRecorder.setVideoFrameRate(6);
+        //mediaRecorder.setVideoFrameRate(6);
 
         // Step 6: Prepare configured MediaRecorder
         try {

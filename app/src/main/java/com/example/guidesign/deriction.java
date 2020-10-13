@@ -90,6 +90,7 @@ public class deriction extends Fragment {
         btnRecord.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //傳值進record.java
                 Bundle bundle = new Bundle();
                 bundle.putInt("act", act);
                 bundle.putString("username",username);

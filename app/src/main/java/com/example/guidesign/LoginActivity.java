@@ -252,6 +252,7 @@ public class LoginActivity extends AppCompatActivity implements EasyPermissions.
 
 
     }
+    //紀錄帳號密碼
     private void memInfo(String usr,String pwd){
         SharedPreferences.Editor editor=getSharedPreferences("data",0).edit();
         editor.putString("username",usr);

@@ -24,48 +24,121 @@
         android:gravity="center_vertical|center_horizontal"
         android:orientation="vertical">
 
-        <EditText
-            android:id="@+id/user"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="帳號"
-            android:inputType="textPersonName" />
+            android:orientation="horizontal">
 
-        <EditText
-            android:id="@+id/phone"
+            <TextView
+                android:id="@+id/textView13"
+                android:layout_width="442dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="帳號："
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/user"
+                android:layout_width="619dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="帳號"
+                android:inputType="textPersonName" />
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="電話"
-            android:inputType="phone" />
+            android:orientation="horizontal">
 
-        <EditText
-            android:id="@+id/pwd"
+            <TextView
+                android:id="@+id/textView15"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="電話："
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/phone"
+                android:layout_width="619dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="電話"
+                android:inputType="phone" />
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="密碼"
-            android:inputType="textPassword" />
+            android:orientation="horizontal">
 
-        <EditText
-            android:id="@+id/checkpwd"
+            <TextView
+                android:id="@+id/textView16"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="密碼："
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/pwd"
+                android:layout_width="621dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="密碼"
+                android:inputType="textPassword" />
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="確認密碼"
-            android:inputType="textPassword" />
+            android:orientation="horizontal">
 
-        <Spinner
-            android:id="@+id/spinner"
+            <TextView
+                android:id="@+id/textView17"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="確認密碼："
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/checkpwd"
+                android:layout_width="623dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="確認密碼"
+                android:inputType="textPassword" />
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView18"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="場域："
+                android:textSize="18sp" />
+
+            <Spinner
+                android:id="@+id/spinner"
+                android:layout_width="627dp"
+                android:layout_height="wrap_content"
+
+                />
+        </LinearLayout>
 
         <Button
             android:id="@+id/regist"
             android:layout_width="270dp"
             android:layout_height="wrap_content"
             android:background="@color/colorPrimary"
+
             android:text="註冊"
             android:textColor="@android:color/white" />
 

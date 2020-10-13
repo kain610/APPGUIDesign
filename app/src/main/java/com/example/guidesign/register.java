@@ -85,6 +85,7 @@ public class register extends AppCompatActivity {
 
 
     private void init() {
+        //取得輸入框內容
         eduser = (EditText)findViewById(R.id.user);
         edpwd = (EditText)findViewById(R.id.pwd);
         edcheckpwd = (EditText)findViewById(R.id.checkpwd);
@@ -125,8 +126,7 @@ public class register extends AppCompatActivity {
         private String accountFile() {
 
             String responseString = null;
-
-
+            //傳資料進資料庫
             HttpClient httpclient = new DefaultHttpClient();
             HttpPost httppost = new HttpPost(register_URL);
             userName =eduser.getText().toString();

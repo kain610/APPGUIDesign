@@ -21,28 +21,22 @@
             android:text="更改資料"
             android:textSize="36sp" />
 
-        <TextView
-            android:id="@+id/textView15"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="45dp"
             android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/textView4"
-                android:layout_width="wrap_content"
+                android:layout_width="24dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:gravity="center_horizontal"
                 android:text="帳號："
                 android:textSize="24sp" />
 
             <TextView
                 android:id="@+id/ed_acc"
-                android:layout_width="213dp"
+                android:layout_width="579dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
@@ -61,18 +55,18 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:gravity="center_horizontal"
-                android:text="暱稱："
+                android:text="名字："
                 android:textSize="24sp" />
 
             <EditText
                 android:id="@+id/ed_na"
-                android:layout_width="wrap_content"
+                android:layout_width="623dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="Name" />
+                android:text="Name"
+                android:textSize="24sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -85,18 +79,18 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:gravity="center_horizontal"
                 android:text="電話："
                 android:textSize="24sp" />
 
             <EditText
                 android:id="@+id/ed_ph"
-                android:layout_width="wrap_content"
+                android:layout_width="625dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="Name" />
+                android:text="Name"
+                android:textSize="24sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -109,17 +103,17 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:gravity="center_horizontal"
                 android:text="密碼："
                 android:textSize="24sp" />
 
             <EditText
                 android:id="@+id/ed_pwd"
-                android:layout_width="wrap_content"
+                android:layout_width="623dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
-                android:inputType="textPassword" />
+                android:inputType="textPassword"
+                android:textSize="24sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -129,30 +123,39 @@
 
             <TextView
                 android:id="@+id/textView12"
-                android:layout_width="wrap_content"
+                android:layout_width="73dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:gravity="center_horizontal"
                 android:text="確認密碼："
                 android:textSize="24sp" />
 
             <EditText
                 android:id="@+id/ed_cp"
-                android:layout_width="wrap_content"
+                android:layout_width="622dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
-                android:inputType="textPassword" />
+                android:inputType="textPassword"
+                android:textSize="24sp" />
         </LinearLayout>
-        <Spinner
-            android:id="@+id/spinner1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
 
-        <TextView
-            android:id="@+id/textView16"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="131dp"
+                android:layout_height="wrap_content"
+                android:text="場域："
+                android:textSize="24sp" />
+
+            <Spinner
+                android:id="@+id/spinner1"
+                android:layout_width="496dp"
+                android:layout_height="43dp" />
+        </LinearLayout>
 
         <Button
             android:id="@+id/btn_update"

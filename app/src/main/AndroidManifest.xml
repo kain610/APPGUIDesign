@@ -23,9 +23,6 @@
         <activity android:name=".froget"></activity>
         <activity android:name=".register" />
         <activity
-            android:name=".remember"
-            android:screenOrientation="landscape" />
-        <activity
             android:name=".LoginActivity"
             android:screenOrientation="landscape">
             <intent-filter>

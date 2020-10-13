@@ -73,6 +73,7 @@ public class SlideshowFragment extends Fragment {
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                //傳資料到hidire.java
                 Bundle bundle = new Bundle();
                 bundle.putInt("position", position);
                 hidire fragment = new hidire();
@@ -95,6 +96,7 @@ public class SlideshowFragment extends Fragment {
 
     }
     private void showList(){
+        //取得錄製紀錄
         Log.d("SQL server","start show list");
         StringRequest stringRequest = new StringRequest(Request.Method.POST, "http://140.116.70.173/AndroidFileUpload/act.php",
             new Response.Listener<String>() {
@@ -156,14 +158,14 @@ public class SlideshowFragment extends Fragment {
 
                             }
                             datamodels= new ArrayList<>();
-                            datamodels.add(new datamodel("動作一","1",act1));
-                            datamodels.add(new datamodel("動作二","2", act2));
-                            datamodels.add(new datamodel("動作三","3", act3));
-                            datamodels.add(new datamodel("動作四","4",act4));
-                            datamodels.add(new datamodel("動作五","5",act5));
-                            datamodels.add(new datamodel("動作六","6", act6));
-                            datamodels.add(new datamodel("動作七","7", act7));
-                            datamodels.add(new datamodel("動作八","8", act8));
+                            datamodels.add(new datamodel("摸同側耳朵","1",act1));
+                            datamodels.add(new datamodel("摸對側膝蓋","2", act2));
+                            datamodels.add(new datamodel("摸屁股","3", act3));
+                            datamodels.add(new datamodel("手向前抬-手肘伸直","4",act4));
+                            datamodels.add(new datamodel("翻掌-手肘彎曲","5",act5));
+                            datamodels.add(new datamodel("手向側邊平舉-手肘伸直","6", act6));
+                            datamodels.add(new datamodel("手向上抬-手肘伸直","7", act7));
+                            datamodels.add(new datamodel("翻掌-手肘伸直","8", act8));
                             adapter= new customadapter(datamodels,getContext());
 
                             lv.setAdapter(adapter);
@@ -174,26 +176,7 @@ public class SlideshowFragment extends Fragment {
 
 
                     } catch (JSONException e){
-                        act1 = "尚未錄製";
-                        act2 = "尚未錄製";
-                        act3 = "尚未錄製";
-                        act4 = "尚未錄製";
-                        act5 = "尚未錄製";
-                        act6 = "尚未錄製";
-                        act7 = "尚未錄製";
-                        act8 = "尚未錄製";
-                        datamodels= new ArrayList<>();
-                        datamodels.add(new datamodel("動作一","1",act1));
-                        datamodels.add(new datamodel("動作二","2", act2));
-                        datamodels.add(new datamodel("動作三","3", act3));
-                        datamodels.add(new datamodel("動作四","4",act4));
-                        datamodels.add(new datamodel("動作五","5",act5));
-                        datamodels.add(new datamodel("動作六","6", act6));
-                        datamodels.add(new datamodel("動作七","7", act7));
-                        datamodels.add(new datamodel("動作八","8", act8));
-                        adapter= new customadapter(datamodels,getContext());
 
-                        lv.setAdapter(adapter);
                     }
 
                 }

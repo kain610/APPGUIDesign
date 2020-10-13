@@ -63,15 +63,16 @@ public class MainActivity extends AppCompatActivity {
 
 
         // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
+        // 設定側邊欄啟用的按鈕
         mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow,R.id.nav_tools)
                 .setDrawerLayout(drawer)
                 .build();
+        //設定layout容器
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
-
+        //取得目前是誰登入
         usr1 = getSharedPreferences("data", MODE_PRIVATE).getString("username1", "");
         pwd1 = getSharedPreferences("data", MODE_PRIVATE).getString("password1", "");
 
@@ -90,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
+        //
          usr2 = getSharedPreferences("data", MODE_PRIVATE).getString("Name", "");
         getMenuInflater().inflate(R.menu.main, menu);
 
