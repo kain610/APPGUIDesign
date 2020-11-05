@@ -176,14 +176,14 @@ public class GalleryFragment extends Fragment {
                                 }
                                 dataModels= new ArrayList<>();
 
-                                dataModels.add(new DataModel("摸同側耳朵","1",act1));
-                                dataModels.add(new DataModel("摸對側膝蓋","2", act2));
-                                dataModels.add(new DataModel("摸屁股","3", act3));
-                                dataModels.add(new DataModel("手向前抬-手肘伸直","4",act4));
-                                dataModels.add(new DataModel("翻掌-手肘彎曲","5",act5));
-                                dataModels.add(new DataModel("手向側邊平舉-手肘伸直","6", act6));
-                                dataModels.add(new DataModel("手向上抬-手肘伸直","7", act7));
-                                dataModels.add(new DataModel("翻掌-手肘伸直","8", act8));
+                                dataModels.add(new DataModel("1.摸同側耳朵","1",act1 ,R.drawable.star));
+                                dataModels.add(new DataModel("2.摸對側膝蓋","2", act2,R.drawable.star));
+                                dataModels.add(new DataModel("3.摸屁股","3", act3,R.drawable.star));
+                                dataModels.add(new DataModel("4.手向前抬-手肘伸直","4",act4,R.drawable.star));
+                                dataModels.add(new DataModel("5.翻掌-手肘彎曲","5",act5,R.drawable.twostar));
+                                dataModels.add(new DataModel("6.手向側邊平舉-手肘伸直","6", act6,R.drawable.star));
+                                dataModels.add(new DataModel("7.手向上抬-手肘伸直","7", act7,R.drawable.twostar));
+                                dataModels.add(new DataModel("8.翻掌-手肘伸直","8", act8,R.drawable.threestar));
                                 adapter= new CustomAdapter(dataModels,getContext());
 
                                 lv.setAdapter(adapter);

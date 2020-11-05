@@ -39,7 +39,7 @@ public class complete extends Fragment {
 
 
     private static int act;
-    private static String username, password, direction;
+    private static String username, password, direction,act1;
     private int DATA_COUNT = 0;
     private TextView title;
     private LineChart complete_chart;
@@ -60,11 +60,13 @@ public class complete extends Fragment {
         View root = inflater.inflate(R.layout.fragment_complete, container, false);
 
         int act2 = (int) getArguments().get("act");
+        String act3 = (String) getArguments().get("act1");
         String str = (String)getArguments().get("username");
         String str1 = (String)getArguments().get("password");
         String str2 = (String)getArguments().get("direction");
         direction = str2;
         act = act2;
+        act1 = act3;
         username = str;
         password = str1;
         initView(root);
@@ -85,9 +87,9 @@ public class complete extends Fragment {
     private void initListener(View root){
 
         if (direction.equals("Left"))
-            title.setText("動作"+act+"  左手_完成度圖表");
+            title.setText(act1+"  左手_完成度圖表");
         else
-            title.setText("動作"+act+"  右手_完成度圖表");
+            title.setText(act1+"  右手_完成度圖表");
     }
     private void initchart(View root)
     {

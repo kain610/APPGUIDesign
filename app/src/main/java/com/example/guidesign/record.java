@@ -3,13 +3,13 @@ package com.example.guidesign;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
 import android.Manifest;
 import android.app.Activity;
+import android.bluetooth.BluetoothAdapter;
 import android.hardware.Camera;
 import android.media.MediaRecorder;
 import android.net.Uri;
@@ -18,7 +18,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 
 import androidx.annotation.NonNull;
-import androidx.core.content.FileProvider;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -27,6 +27,7 @@ import android.os.CountDownTimer;
 import android.os.Environment;
 import android.os.Handler;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,11 +38,13 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.media.CamcorderProfile;
-import android.media.MediaRecorder;
 
 import com.bumptech.glide.Glide;
-
-import java.util.List;
+import com.bumptech.glide.load.DataSource;
+import com.bumptech.glide.load.engine.GlideException;
+import com.bumptech.glide.load.resource.gif.GifDrawable;
+import com.bumptech.glide.request.RequestListener;
+import com.bumptech.glide.request.target.Target;
 
 import pub.devrel.easypermissions.AppSettingsDialog;
 import pub.devrel.easypermissions.EasyPermissions;
@@ -104,14 +107,300 @@ public class record extends Fragment implements EasyPermissions.PermissionCallba
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View root = inflater.inflate(R.layout.fragment_record, container, false);
+        final ImageView imageView = root.findViewById(R.id.ShowImg);
+        TextView textView = root.findViewById(R.id.ShowDire);
         int act2 = (int) getArguments().get("act");
         String str = (String)getArguments().get("username");
         String str1 = (String)getArguments().get("password");
         String str2 = (String)getArguments().get("direction");
+        BluetoothAdapter mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         direction = str2;
         act = act2;
         username = str;
         password = str1;
+      /*  if (mBluetoothAdapter.isEnabled()) {
+
+           setcomand(root);
+        }*/
+
+        if (direction == "Left"){
+            textView.setText("左手");
+        }else{
+            textView.setText("右手");
+        }
+
+        if (act == 1){
+            Glide.with(this).asGif().load(R.drawable.a1).listener(new RequestListener<GifDrawable>() {
+                @Override
+                public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<GifDrawable> target, boolean isFirstResource) {
+                    return false;
+                }
+
+                @Override
+                public boolean onResourceReady(final GifDrawable resource, Object model, Target<GifDrawable> target, DataSource dataSource, boolean isFirstResource) {
+                    resource.setLoopCount(1);
+
+                    return false;
+                }
+            }).into(imageView);
+            imageView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Glide.with(record.this).asGif().load(R.drawable.a1).listener(new RequestListener<GifDrawable>() {
+                        @Override
+                        public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<GifDrawable> target, boolean isFirstResource) {
+                            return false;
+                        }
+
+                        @Override
+                        public boolean onResourceReady(final GifDrawable resource, Object model, Target<GifDrawable> target, DataSource dataSource, boolean isFirstResource) {
+                            resource.setLoopCount(1);
+
+                            return false;
+                        }
+                    }).into(imageView);
+
+                }
+            });
+        }
+        if (act == 2){
+            Glide.with(this).asGif().load(R.drawable.a2).listener(new RequestListener<GifDrawable>() {
+                @Override
+                public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<GifDrawable> target, boolean isFirstResource) {
+                    return false;
+                }
+
+                @Override
+                public boolean onResourceReady(final GifDrawable resource, Object model, Target<GifDrawable> target, DataSource dataSource, boolean isFirstResource) {
+                    resource.setLoopCount(1);
+
+                    return false;
+                }
+            }).into(imageView);
+            imageView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Glide.with(record.this).asGif().load(R.drawable.a2).listener(new RequestListener<GifDrawable>() {
+                        @Override
+                        public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<GifDrawable> target, boolean isFirstResource) {
+                            return false;
+                        }
+
+                        @Override
+                        public boolean onResourceReady(final GifDrawable resource, Object model, Target<GifDrawable> target, DataSource dataSource, boolean isFirstResource) {
+                            resource.setLoopCount(1);
+
+                            return false;
+                        }
+                    }).into(imageView);
+
+                }
+            });
+        }
+        if (act == 3){
+            Glide.with(this).asGif().load(R.drawable.a3).listener(new RequestListener<GifDrawable>() {
+                @Override
+                public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<GifDrawable> target, boolean isFirstResource) {
+                    return false;
+                }
+
+                @Override
+                public boolean onResourceReady(final GifDrawable resource, Object model, Target<GifDrawable> target, DataSource dataSource, boolean isFirstResource) {
+                    resource.setLoopCount(1);
+
+                    return false;
+                }
+            }).into(imageView);
+            imageView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Glide.with(record.this).asGif().load(R.drawable.a3).listener(new RequestListener<GifDrawable>() {
+                        @Override
+                        public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<GifDrawable> target, boolean isFirstResource) {
+                            return false;
+                        }
+
+                        @Override
+                        public boolean onResourceReady(final GifDrawable resource, Object model, Target<GifDrawable> target, DataSource dataSource, boolean isFirstResource) {
+                            resource.setLoopCount(1);
+
+                            return false;
+                        }
+                    }).into(imageView);
+
+                }
+            });
+        }
+        if (act == 4){
+            Glide.with(this).asGif().load(R.drawable.a4).listener(new RequestListener<GifDrawable>() {
+                @Override
+                public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<GifDrawable> target, boolean isFirstResource) {
+                    return false;
+                }
+
+                @Override
+                public boolean onResourceReady(final GifDrawable resource, Object model, Target<GifDrawable> target, DataSource dataSource, boolean isFirstResource) {
+                    resource.setLoopCount(1);
+
+                    return false;
+                }
+            }).into(imageView);
+            imageView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Glide.with(record.this).asGif().load(R.drawable.a4).listener(new RequestListener<GifDrawable>() {
+                        @Override
+                        public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<GifDrawable> target, boolean isFirstResource) {
+                            return false;
+                        }
+
+                        @Override
+                        public boolean onResourceReady(final GifDrawable resource, Object model, Target<GifDrawable> target, DataSource dataSource, boolean isFirstResource) {
+                            resource.setLoopCount(1);
+
+                            return false;
+                        }
+                    }).into(imageView);
+
+                }
+            });
+        }
+        if (act == 5){
+            Glide.with(this).asGif().load(R.drawable.a5).listener(new RequestListener<GifDrawable>() {
+                @Override
+                public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<GifDrawable> target, boolean isFirstResource) {
+                    return false;
+                }
+
+                @Override
+                public boolean onResourceReady(final GifDrawable resource, Object model, Target<GifDrawable> target, DataSource dataSource, boolean isFirstResource) {
+                    resource.setLoopCount(1);
+
+                    return false;
+                }
+            }).into(imageView);
+            imageView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Glide.with(record.this).asGif().load(R.drawable.a5).listener(new RequestListener<GifDrawable>() {
+                        @Override
+                        public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<GifDrawable> target, boolean isFirstResource) {
+                            return false;
+                        }
+
+                        @Override
+                        public boolean onResourceReady(final GifDrawable resource, Object model, Target<GifDrawable> target, DataSource dataSource, boolean isFirstResource) {
+                            resource.setLoopCount(1);
+
+                            return false;
+                        }
+                    }).into(imageView);
+
+                }
+            });
+        }
+        if (act == 6){
+            Glide.with(this).asGif().load(R.drawable.a6).listener(new RequestListener<GifDrawable>() {
+                @Override
+                public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<GifDrawable> target, boolean isFirstResource) {
+                    return false;
+                }
+
+                @Override
+                public boolean onResourceReady(final GifDrawable resource, Object model, Target<GifDrawable> target, DataSource dataSource, boolean isFirstResource) {
+                    resource.setLoopCount(1);
+
+                    return false;
+                }
+            }).into(imageView);
+            imageView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Glide.with(record.this).asGif().load(R.drawable.a6).listener(new RequestListener<GifDrawable>() {
+                        @Override
+                        public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<GifDrawable> target, boolean isFirstResource) {
+                            return false;
+                        }
+
+                        @Override
+                        public boolean onResourceReady(final GifDrawable resource, Object model, Target<GifDrawable> target, DataSource dataSource, boolean isFirstResource) {
+                            resource.setLoopCount(1);
+
+                            return false;
+                        }
+                    }).into(imageView);
+
+                }
+            });
+        }
+        if (act == 7){
+            Glide.with(this).asGif().load(R.drawable.a7).listener(new RequestListener<GifDrawable>() {
+                @Override
+                public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<GifDrawable> target, boolean isFirstResource) {
+                    return false;
+                }
+
+                @Override
+                public boolean onResourceReady(final GifDrawable resource, Object model, Target<GifDrawable> target, DataSource dataSource, boolean isFirstResource) {
+                    resource.setLoopCount(1);
+
+                    return false;
+                }
+            }).into(imageView);
+            imageView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Glide.with(record.this).asGif().load(R.drawable.a7).listener(new RequestListener<GifDrawable>() {
+                        @Override
+                        public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<GifDrawable> target, boolean isFirstResource) {
+                            return false;
+                        }
+
+                        @Override
+                        public boolean onResourceReady(final GifDrawable resource, Object model, Target<GifDrawable> target, DataSource dataSource, boolean isFirstResource) {
+                            resource.setLoopCount(1);
+
+                            return false;
+                        }
+                    }).into(imageView);
+
+                }
+            });
+        }
+        if (act == 8){
+            Glide.with(this).asGif().load(R.drawable.a8).listener(new RequestListener<GifDrawable>() {
+                @Override
+                public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<GifDrawable> target, boolean isFirstResource) {
+                    return false;
+                }
+
+                @Override
+                public boolean onResourceReady(final GifDrawable resource, Object model, Target<GifDrawable> target, DataSource dataSource, boolean isFirstResource) {
+                    resource.setLoopCount(1);
+
+                    return false;
+                }
+            }).into(imageView);
+            imageView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Glide.with(record.this).asGif().load(R.drawable.a8).listener(new RequestListener<GifDrawable>() {
+                        @Override
+                        public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<GifDrawable> target, boolean isFirstResource) {
+                            return false;
+                        }
+
+                        @Override
+                        public boolean onResourceReady(final GifDrawable resource, Object model, Target<GifDrawable> target, DataSource dataSource, boolean isFirstResource) {
+                            resource.setLoopCount(1);
+
+                            return false;
+                        }
+                    }).into(imageView);
+
+                }
+            });
+        }
 
         if (!isDeviceSupportCamera()) {
             Toast.makeText(this.getActivity(),
@@ -208,6 +497,21 @@ public class record extends Fragment implements EasyPermissions.PermissionCallba
 
 
     }
+
+  /*  private void setcomand(View root) {
+        root.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View view, int i, KeyEvent keyEvent) {
+                if (keyEvent.getKeyCode() == KeyEvent.KEYCODE_VOLUME_UP) {
+                    recordVideo();
+                    return true;
+
+                }
+                return false;
+            }
+        });
+    }*/
+
 
     @Override
     public void onResume() {
@@ -524,7 +828,7 @@ public class record extends Fragment implements EasyPermissions.PermissionCallba
         // Step 5: Set the preview output
         mediaRecorder.setPreviewDisplay(mPreview.getHolder().getSurface());
         //FPS
-        //mediaRecorder.setVideoFrameRate(6);
+        mediaRecorder.setVideoFrameRate(6);
 
         // Step 6: Prepare configured MediaRecorder
         try {
@@ -752,5 +1056,6 @@ public class record extends Fragment implements EasyPermissions.PermissionCallba
 
 
     }
+
 
 

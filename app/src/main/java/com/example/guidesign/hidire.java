@@ -14,6 +14,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 import com.bumptech.glide.Glide;
+import com.example.guidesign.ui.slideshow.datamodel;
 
 import static android.content.Context.MODE_PRIVATE;
 
@@ -25,6 +26,7 @@ public class hidire extends Fragment {
 
 
     private Button btnRecord;
+    private static String act1;
     private static int act;
     private static String username, password, direction;
     private RadioButton lefthand;
@@ -45,27 +47,36 @@ public class hidire extends Fragment {
 
         int str =bundle.getInt("position") ;
         if (str == 0){
-            act = 1;                    }
+            act1 = "摸同側耳朵";
+            act=1;
+        }
         if (str == 1){
-            act = 2;
+            act1 = "摸對側膝蓋";
+            act=2;
                     }
         if (str == 2){
-            act = 3;
+            act1 = "摸屁股";
+            act=3;
         }
         if (str == 3){
-            act = 4;
+            act1 = "手向前抬-手肘伸直";
+            act=4;
         }
         if (str == 4){
-            act = 5;
+            act1 = "翻掌-手肘彎曲";
+            act=5;
         }
         if (str == 5){
-            act = 6;
+            act1 = "手向側邊平舉-手肘伸直";
+            act=6;
         }
         if (str == 6){
-            act = 7;
+            act1 = "手向上抬-手肘伸直";
+            act=7;
         }
         if (str == 7){
-            act = 8;
+            act1 = "翻掌-手肘伸直";
+            act=8;
         }
         lefthand = root.findViewById(R.id.lefthand);
         if(lefthand.isChecked()){
@@ -111,6 +122,7 @@ public class hidire extends Fragment {
             public void onClick(View view) {
                 Bundle bundle = new Bundle();
                 bundle.putInt("act", act);
+                bundle.putString("act1", act1);
                 bundle.putString("username",username);
                 bundle.putString("password",password);
                 bundle.putString("direction",direction);

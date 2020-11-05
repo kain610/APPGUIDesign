@@ -87,6 +87,7 @@ public class CustomAdapter extends ArrayAdapter<DataModel> implements View.OnCli
 
         viewHolder.txtName.setText(dataModel.getName());
         viewHolder.txtVersion.setText(dataModel.getFeature());
+        viewHolder.info.setImageResource(dataModel.getimg());
 
 
 

@@ -43,7 +43,7 @@ public class history extends Fragment {
     List<Patient> patientList;
 
     private static int act;
-    private static String username, password, direction;
+    private static String username, password, direction,act1;
     private int DATA_COUNT = 0;
     private TextView title;
 
@@ -58,11 +58,13 @@ public class history extends Fragment {
         // Inflate the layout for this fragment
         View root = inflater.inflate(R.layout.fragment_history, container, false);
         int act2 = (int) getArguments().get("act");
+        String act3 = (String) getArguments().get("act1");
         String str = (String)getArguments().get("username");
         String str1 = (String)getArguments().get("password");
         String str2 = (String)getArguments().get("direction");
         direction = str2;
         act = act2;
+        act1 = act3;
         username = str;
         password = str1;
 
@@ -89,9 +91,9 @@ public class history extends Fragment {
     private void initListener(View root){
 
         if (direction.equals("Left"))
-            title.setText("動作"+act+"  左手");
+            title.setText(act1+"  左手");
         else
-            title.setText("動作"+act+"  右手");
+            title.setText(act1+"  右手");
     }
     private void showList(){
         Log.d("SQL server","start show list");
@@ -157,6 +159,7 @@ public class history extends Fragment {
             public void onClick(View view) {
                 Bundle bundle = new Bundle();
                 bundle.putInt("act", act);
+                bundle.putString("act1", act1);
                 bundle.putString("username",username);
                 bundle.putString("password",password);
                 bundle.putString("direction",direction);
@@ -175,6 +178,7 @@ public class history extends Fragment {
             public void onClick(View view) {
                 Bundle bundle = new Bundle();
                 bundle.putInt("act", act);
+                bundle.putString("act1", act1);
                 bundle.putString("username",username);
                 bundle.putString("password",password);
                 bundle.putString("direction",direction);

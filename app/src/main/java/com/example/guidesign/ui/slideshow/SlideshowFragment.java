@@ -158,14 +158,14 @@ public class SlideshowFragment extends Fragment {
 
                             }
                             datamodels= new ArrayList<>();
-                            datamodels.add(new datamodel("摸同側耳朵","1",act1));
-                            datamodels.add(new datamodel("摸對側膝蓋","2", act2));
-                            datamodels.add(new datamodel("摸屁股","3", act3));
-                            datamodels.add(new datamodel("手向前抬-手肘伸直","4",act4));
-                            datamodels.add(new datamodel("翻掌-手肘彎曲","5",act5));
-                            datamodels.add(new datamodel("手向側邊平舉-手肘伸直","6", act6));
-                            datamodels.add(new datamodel("手向上抬-手肘伸直","7", act7));
-                            datamodels.add(new datamodel("翻掌-手肘伸直","8", act8));
+                            datamodels.add(new datamodel("1.摸同側耳朵","1",act1));
+                            datamodels.add(new datamodel("2.摸對側膝蓋","2", act2));
+                            datamodels.add(new datamodel("3.摸屁股","3", act3));
+                            datamodels.add(new datamodel("4.手向前抬-手肘伸直","4",act4));
+                            datamodels.add(new datamodel("5.翻掌-手肘彎曲","5",act5));
+                            datamodels.add(new datamodel("6.手向側邊平舉-手肘伸直","6", act6));
+                            datamodels.add(new datamodel("7.手向上抬-手肘伸直","7", act7));
+                            datamodels.add(new datamodel("8.翻掌-手肘伸直","8", act8));
                             adapter= new customadapter(datamodels,getContext());
 
                             lv.setAdapter(adapter);

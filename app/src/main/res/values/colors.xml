@@ -9,4 +9,5 @@
     <color name="txt_font">#053129</color>
     <color name="action_bar">#1f2649</color>
     <color name="username_password">#A1E7E6E6</color>
+    <color name="foreground">@android:color/white</color>
 </resources>

@@ -38,7 +38,7 @@ public class HomeFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_home, container, false);
         final TextView textView = root.findViewById(R.id.text_home);
         username = this.getActivity().getSharedPreferences("data", MODE_PRIVATE).getString("Name", "");
-        textView.setText("歡迎回來~~"+username);
+        textView.setText("歡迎回來~~"+username+"\n動作評量AI小幫手");
 
 
 
