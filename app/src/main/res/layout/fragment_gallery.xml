@@ -27,7 +27,9 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="動作名稱"
-                android:textSize="30sp" />
+                android:textColor="#ABABAE"
+                android:textSize="30sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/range"
@@ -36,7 +38,9 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="難易度"
-                android:textSize="30sp" />
+                android:textColor="#ABABAE"
+                android:textSize="30sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/lasttime"
@@ -45,7 +49,9 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="上次錄制時間"
-                android:textSize="30sp" />
+                android:textColor="#ABABAE"
+                android:textSize="30sp"
+                android:textStyle="bold" />
         </LinearLayout>
 
         <ListView

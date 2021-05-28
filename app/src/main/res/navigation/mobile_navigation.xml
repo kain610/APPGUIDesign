@@ -3,7 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@id/nav_home">
+    app:startDestination="@id/nav_home"
+
+    >
 
     <fragment
         android:id="@+id/nav_home"
@@ -38,6 +40,11 @@
         android:name="com.example.guidesign.ui.tools.ToolsFragment"
         android:label="@string/menu_tools"
         tools:layout="@layout/fragment_tools" />
+    <fragment
+        android:id="@+id/nav_problem"
+        android:name="com.example.guidesign.ProblemFragment"
+        android:label="@string/menu_problem"
+        tools:layout="@layout/fragment_problem" />
 
 
 

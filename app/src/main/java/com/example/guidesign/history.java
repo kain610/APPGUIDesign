@@ -97,7 +97,7 @@ public class history extends Fragment {
     }
     private void showList(){
         Log.d("SQL server","start show list");
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://140.116.70.173/AndroidFileUpload/sql.php",
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://140.116.70.157/AndroidFileUpload/sql.php",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -153,7 +153,7 @@ public class history extends Fragment {
     }
 
     private void configureButton(View root) {
-        btnRecord = (Button) root.findViewById(R.id.btn_com);
+        btnRecord = (Button) root.findViewById(R.id.chart);
         btnRecord.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -163,7 +163,7 @@ public class history extends Fragment {
                 bundle.putString("username",username);
                 bundle.putString("password",password);
                 bundle.putString("direction",direction);
-                complete fragment =  new complete();
+                ChartFragment fragment =  new ChartFragment();
                 fragment.setArguments(bundle);
                 FragmentTransaction transaction = getFragmentManager().beginTransaction();
                 transaction.replace(R.id.nav_host_fragment, fragment);
@@ -172,24 +172,7 @@ public class history extends Fragment {
             }
         });
 
-        btnRecord1 = root.findViewById(R.id.btn_flu);
-        btnRecord1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Bundle bundle = new Bundle();
-                bundle.putInt("act", act);
-                bundle.putString("act1", act1);
-                bundle.putString("username",username);
-                bundle.putString("password",password);
-                bundle.putString("direction",direction);
-                fluency fragment =  new fluency();
-                fragment.setArguments(bundle);
-                FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                transaction.replace(R.id.nav_host_fragment, fragment);
-                transaction.addToBackStack(null);
-                transaction.commit();
-            }
-        });
+
 
     }
 

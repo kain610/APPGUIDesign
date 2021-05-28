@@ -98,7 +98,7 @@ public class SlideshowFragment extends Fragment {
     private void showList(){
         //取得錄製紀錄
         Log.d("SQL server","start show list");
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, "http://140.116.70.173/AndroidFileUpload/act.php",
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, "http://140.116.70.157/AndroidFileUpload/act.php",
             new Response.Listener<String>() {
                 @Override
                 public void onResponse(String response) {

@@ -112,7 +112,7 @@ public class GalleryFragment extends Fragment {
     private void showList(){
         //取得錄製紀錄
         Log.d("SQL server","start show list");
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, "http://140.116.70.173/AndroidFileUpload/act.php",
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, "http://140.116.70.157/AndroidFileUpload/act.php",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -134,9 +134,6 @@ public class GalleryFragment extends Fragment {
                                 if(patientObj.getString("Name").equals(username) &&  patientObj.getInt("Action")==1)
                                 {
                                     act1 = patientObj.getString("Time");
-
-
-
                                 }
 
                                 if(patientObj.getString("Name").equals(username) &&  patientObj.getInt("Action")==2)

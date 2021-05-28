@@ -16,6 +16,9 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -48,12 +51,18 @@ public class register extends AppCompatActivity {
     private String pwd;
     private String checkpwd;
     private String phone;
+    private String age;
+    private String sex;
     private String status;
+    private String checkpet;
     private String result;
-    private EditText eduser,edpwd,edcheckpwd,edphone;
+    private EditText eduser,edpwd,edcheckpwd,edphone,edage;
+    private RadioButton boy;
+    private RadioButton gril;
+    private RadioGroup radioGroup;
     public   int local;
     private Button sumbit;
-    public static final String register_URL = "http://140.116.70.173/AndroidFileUpload/register.php";
+    public static final String register_URL = "http://140.116.70.157/AndroidFileUpload/register.php";
 
 
     @Override
@@ -61,6 +70,7 @@ public class register extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
         sumbit = findViewById(R.id.regist);
+        ImageView cpet = (ImageView) findViewById(R.id.pet);
         Spinner spinner = findViewById(R.id.spinner);
         final String[] place = {"成醫復健部","成醫老年科"};
         ArrayAdapter<String> placeList = new ArrayAdapter<>(this,
@@ -77,10 +87,22 @@ public class register extends AppCompatActivity {
                        @Override
             public void onNothingSelected(AdapterView<?> parent) {}
         });
+        Bundle bundle = getIntent().getExtras();
+        String pet = bundle.getString("pet");
+        if(pet.equals("1")){
+            cpet.setImageResource(R.drawable.design_31);
+            checkpet= String.valueOf('1');
+
+        }else if(pet.equals("2")){
+            cpet.setImageResource(R.drawable.design_32);
+            checkpet=String.valueOf('2');
+        }
+
 
         init();
         initListener();
     }
+
 
 
 
@@ -90,6 +112,24 @@ public class register extends AppCompatActivity {
         edpwd = (EditText)findViewById(R.id.pwd);
         edcheckpwd = (EditText)findViewById(R.id.checkpwd);
         edphone = (EditText)findViewById(R.id.phone);
+        edage = (EditText)findViewById(R.id.age);
+        radioGroup = (RadioGroup)findViewById(R.id.sex);
+        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int arg1) {
+                boy = group.findViewById(R.id.boy);
+                gril = group.findViewById(R.id.gril);
+                if (boy.isChecked()){
+
+                    sex="Male";
+                }
+                if(gril.isChecked()){
+
+                    sex="Female";
+                }
+            }
+        });
+
 
     }
     private void initListener() {
@@ -133,6 +173,7 @@ public class register extends AppCompatActivity {
             pwd = edpwd.getText().toString();
             checkpwd = edcheckpwd.getText().toString();
             phone = edphone.getText().toString();
+            age =edage.getText().toString();
             status = String.valueOf(local);
 
 
@@ -145,6 +186,9 @@ public class register extends AppCompatActivity {
                 vars.add(new BasicNameValuePair("checkpwd", checkpwd));
                 vars.add(new BasicNameValuePair("phone", phone));
                 vars.add(new BasicNameValuePair("status", status));
+                vars.add(new BasicNameValuePair("age", age));
+                vars.add(new BasicNameValuePair("sex", sex));
+                vars.add(new BasicNameValuePair("pet", checkpet));
 
 
                 httppost.setEntity(new UrlEncodedFormEntity(vars,HTTP.UTF_8));

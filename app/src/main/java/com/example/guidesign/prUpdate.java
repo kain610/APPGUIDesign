@@ -59,7 +59,7 @@ public class prUpdate extends Fragment {
     String acc1,pwd1,na1,ph1,check1,status;
     private EditText n,p,pw,ch;
     public   int local;
-    public static final String Update_URL = "http://140.116.70.173/AndroidFileUpload/update.php";
+    public static final String Update_URL = "http://140.116.70.157/AndroidFileUpload/update.php";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

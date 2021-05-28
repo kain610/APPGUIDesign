@@ -49,7 +49,7 @@ public class LoginActivity extends AppCompatActivity implements EasyPermissions.
     private Button btnReg;
     private Button btnFor;
     private EditText username;
-    String name;
+    String name ,coin,day;
     private EditText password;
     private CheckBox remember;
     private String getuser,getpass;
@@ -120,7 +120,7 @@ public class LoginActivity extends AppCompatActivity implements EasyPermissions.
                 if (motionEvent.getAction() == MotionEvent.ACTION_UP) {  //起來的時候恢復背景與顏色
 
                     btnReg.setBackgroundResource(R.color.colorPrimary);
-                    Intent intent = new Intent(LoginActivity.this, register.class);
+                    Intent intent = new Intent(LoginActivity.this, PetActivity.class);
                     startActivity(intent);
                 }
                 return false;
@@ -164,7 +164,7 @@ public class LoginActivity extends AppCompatActivity implements EasyPermissions.
 
     private boolean checkName(){
         Log.d("SQL server","start checking name");
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, "http://140.116.70.173/AndroidFileUpload/login.php",
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, "http://140.116.70.157/AndroidFileUpload/login.php",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -181,6 +181,8 @@ public class LoginActivity extends AppCompatActivity implements EasyPermissions.
                                 {
                                     Log.d("SQL server","Do have "+getuser);
                                     name = patientObj.getString("Name");
+                                    coin = patientObj.getString("Coins");
+                                    day = patientObj.getString("Days");
 
                                     haveName=1;
                                 }
@@ -260,6 +262,8 @@ public class LoginActivity extends AppCompatActivity implements EasyPermissions.
         editor.putString("username1",usr);
         editor.putString("password1",pwd);
         editor.putString("Name",name);
+        editor.putString("Coins",coin);
+        editor.putString("Days",day);
         editor.commit();
     }
 

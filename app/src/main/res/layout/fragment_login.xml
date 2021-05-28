@@ -14,25 +14,21 @@
         android:focusableInTouchMode="true"
         tools:layout_editor_absoluteX="0dp">
 
-        <TextView
-            android:id="@+id/tv_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_marginStart="25dp"
-            android:layout_marginLeft="25dp"
-            android:layout_marginBottom="10dp"
-            android:text="@string/app_name"
-            android:textSize="50sp" />
 
         <EditText
             android:id="@+id/username"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_width="318dp"
+            android:layout_height="wrap_content"
             android:layout_above="@id/password"
+            android:layout_alignEnd="@+id/password"
             android:layout_marginLeft="20dp"
+            android:layout_marginEnd="0dp"
+
             android:layout_marginRight="20dp"
-            android:background="@color/username_password"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/shape"
+            android:bottomLeftRadius="30dp"
+            android:bottomRightRadius="30dp"
             android:hint="@string/username"
             android:inputType="textPersonName|textNoSuggestions"
             android:padding="15dp"
@@ -40,13 +36,15 @@
 
         <EditText
             android:id="@+id/password"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_centerInParent="true"
+            android:layout_width="318dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="10dp"
+            android:layout_marginEnd="263dp"
             android:layout_marginRight="20dp"
-            android:background="@color/username_password"
+            android:background="@drawable/shape"
             android:hint="@string/password"
             android:inputType="textPassword|textNoSuggestions"
             android:padding="15dp"
@@ -54,52 +52,53 @@
 
         <Button
             android:id="@+id/btn_certify"
-            android:layout_width="153dp"
+            android:layout_width="134dp"
             android:layout_height="wrap_content"
             android:layout_below="@id/password"
             android:layout_alignEnd="@+id/password"
             android:layout_alignRight="@+id/password"
-            android:layout_marginTop="13dp"
-            android:layout_marginEnd="197dp"
-            android:layout_marginRight="197dp"
-            android:background="@color/colorPrimary"
+            android:layout_marginTop="41dp"
+            android:layout_marginEnd="189dp"
+            android:layout_marginRight="189dp"
+            android:background="@drawable/shape1"
+
             android:text="@string/certify"
-            android:textColor="@android:color/white" />
+            android:textColor="@android:color/black" />
 
         <Button
             android:id="@+id/btn_reg"
-            android:layout_width="153dp"
+            android:layout_width="137dp"
             android:layout_height="wrap_content"
             android:layout_below="@id/password"
             android:layout_alignEnd="@+id/password"
             android:layout_alignRight="@+id/password"
-            android:layout_marginTop="13dp"
-            android:layout_marginEnd="-1dp"
-            android:layout_marginRight="-2dp"
-            android:background="@color/colorPrimary"
+            android:layout_marginTop="40dp"
+            android:layout_marginEnd="3dp"
+            android:layout_marginRight="3dp"
+            android:background="@drawable/shape1"
             android:text="註冊"
-            android:textColor="@android:color/white" />
+            android:textColor="@android:color/black" />
 
         <Button
             android:id="@+id/btn_forget"
             android:layout_width="111dp"
-            android:layout_height="wrap_content"
+            android:layout_height="38dp"
             android:layout_below="@+id/btn_certify"
             android:layout_alignParentRight="true"
-            android:layout_marginTop="28dp"
-            android:layout_marginRight="28dp"
+            android:layout_marginTop="35dp"
+            android:layout_marginRight="271dp"
             android:background="#FFFFFF"
             android:text="忘記密碼"
-            android:textColor="@color/action_bar" />
+            android:textColor="@android:color/black" />
 
         <CheckBox
             android:id="@+id/remember"
             android:layout_width="153dp"
             android:layout_height="wrap_content"
             android:layout_below="@+id/password"
-            android:layout_marginTop="19dp"
-            android:layout_marginEnd="196dp"
-            android:layout_marginRight="196dp"
+            android:layout_marginTop="127dp"
+            android:layout_marginEnd="-160dp"
+            android:layout_marginRight="-160dp"
             android:layout_toStartOf="@+id/btn_certify"
             android:layout_toLeftOf="@+id/btn_certify"
             android:text="記住帳號密碼" />
@@ -111,5 +110,15 @@
             android:layout_alignParentBottom="true"
             android:layout_marginBottom="22dp"
             android:text="@string/version" />
+
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="310dp"
+            android:layout_height="271dp"
+            android:layout_above="@+id/username"
+            android:layout_alignEnd="@+id/username"
+            android:layout_marginEnd="6dp"
+            android:layout_marginBottom="5dp"
+            app:srcCompat="@drawable/design_1" />
     </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

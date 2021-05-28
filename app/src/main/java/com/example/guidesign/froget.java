@@ -34,7 +34,7 @@ public class froget extends AppCompatActivity {
     private static final String TAG = MainActivity.class.getSimpleName();
     private String f_user , f_phone;
     private Button sumbit;
-    public static final String found_URL = "http://140.116.70.173/AndroidFileUpload/forget.php";
+    public static final String found_URL = "http://140.116.70.157/AndroidFileUpload/forget.php";
 
 
 

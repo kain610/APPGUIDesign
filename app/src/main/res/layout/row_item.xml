@@ -22,7 +22,10 @@
             android:layout_weight="1"
             android:gravity="bottom|center_horizontal"
             android:text="動作名稱"
-            android:textSize="24sp" />
+            android:textAlignment="textStart"
+            android:textColor="#ABABAE"
+            android:textSize="24sp"
+            android:textStyle="bold" />
 
         <ImageView
             android:id="@+id/item_info"
@@ -40,7 +43,9 @@
             android:layout_weight="1"
             android:gravity="bottom|center_horizontal"
             android:text="上次錄制時間"
-            android:textSize="24sp" />
+            android:textColor="#ABABAE"
+            android:textSize="24sp"
+            android:textStyle="bold" />
     </LinearLayout>
 
 

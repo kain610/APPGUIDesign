@@ -1,25 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android"
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
    >
 
     <group android:checkableBehavior="single">
 
         <item
             android:id="@+id/nav_home"
-            android:icon="@drawable/homeicon"
+            android:icon="@drawable/ic_dh"
             android:title="@string/menu_home" />
         <item
             android:id="@+id/nav_gallery"
-            android:icon="@drawable/video_camera_work"
+            android:icon="@drawable/design_35"
             android:title="@string/menu_gallery" />
         <item
             android:id="@+id/nav_slideshow"
-            android:icon="@drawable/baseline_insert_chart_24"
+            android:icon="@drawable/design_36"
             android:title="@string/menu_slideshow" />
         <item
             android:id="@+id/nav_tools"
-            android:icon="@drawable/ic_person_black_18dp"
+            android:icon="@drawable/design_37"
             android:title="使用者資料" />
+        <item
+            android:id="@+id/nav_problem"
+            android:icon="@drawable/design_38"
+            android:title="解憂小站" />
 
     </group>
 

@@ -4,25 +4,37 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_gravity="center"
     tools:context=".MainActivity">
 
     <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/AppTheme"
 
-        >
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
-            android:layout_width="match_parent"
+            android:layout_width="785dp"
             android:layout_height="?attr/actionBarSize"
+            android:layout_centerInParent="false"
+
+
             android:background="?attr/colorPrimary"
 
+            app:navigationIcon="?attr/homeAsUpIndicator"
+            app:titleTextColor="#FFFFFF">
 
-            app:titleMargin="0dp"
-            app:titleTextAppearance="@style/Toolbar.TitleText"
-            app:titleTextColor="#FFFFFF" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal"
+                android:src="@drawable/design_43" />
+
+        </androidx.appcompat.widget.Toolbar>
+
 
     </com.google.android.material.appbar.AppBarLayout>
 

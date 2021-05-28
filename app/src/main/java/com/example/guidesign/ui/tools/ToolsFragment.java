@@ -89,7 +89,7 @@ public class ToolsFragment extends Fragment {
 
     private void showperson(final View v) {
         Log.d("SQL server","start show list");
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, "http://140.116.70.173/AndroidFileUpload/person.php",
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, "http://140.116.70.157/AndroidFileUpload/person.php",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
